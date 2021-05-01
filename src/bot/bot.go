@@ -4,6 +4,7 @@ import (
 	"log"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+	userDao "github.com/rvramesh/tg-microwin-bot/src/dao"
 )
 
 // StartBot this function to start the bot
@@ -34,6 +35,13 @@ func StartBot(token string) error {
 		}
 
 		log.Printf("[%s] %s", update.Message.From.UserName, update.Message.Text)
+		user := userDao.CheckAndGetUser(update.Message.Chat)
+
+		log.Printf("UserID: %d ChatId : %d UserName: %s %s", user.ID, user.ChatId, user.FirstName, user.LastName)
+
+		if user.IsBlocked {
+			continue
+		}
 
 		if update.Message.IsCommand() {
 			if err = commandHandler(update, bot); err != nil { // Handle the command message

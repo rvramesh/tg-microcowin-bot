@@ -26,3 +26,4 @@
 TgBotGo
 
 .env
+*.db

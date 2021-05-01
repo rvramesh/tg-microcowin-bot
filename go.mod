@@ -7,4 +7,6 @@ require (
 	github.com/joho/godotenv v1.3.0
 	github.com/technoweenie/multipartstreamer v1.0.1 // indirect
 	github.com/xsami/TgBotGo v0.0.0-20191006224755-e4d1ae7efcef
+	gorm.io/driver/sqlite v1.1.4
+	gorm.io/gorm v1.21.6
 )
